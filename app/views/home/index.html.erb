@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Landing</title>
+<title>멋쟁이 사자처럼</title>
+<meta property="og:title" content="멋쟁이 사자처럼" />
+<meta property="og:site_name" content="졸업 전에 내 회사 한번 가져봐야 하지 않겠나?" />
+<meta property="og:image" content="http://likelion.net/assets/thumb.jpg">
 <%= stylesheet_link_tag    "application", :media => "all" %>
 <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumMyeongjoExtraBoldWeb' rel='stylesheet' type='text/css' />
 <%= javascript_include_tag "application" %>
@@ -31,12 +34,22 @@
 </div>
 <div id="promise_wrapper">
   <ul id="promise">
-    <li><u>나만의 웹/앱 서비스</u>를 갖고 싶은 서울대인에게</li>
+    <li><u>나만의 웹/앱 서비스</u>를 갖고 싶지만</li>
+    <li>어떻게 시작해야 할지 모르는</li>
+    <li>비 컴퓨터공학 전공 서울대인에게</li>
     <li><u>snuev.com</u> 정도 짤 수 있는 실력을 갖추게 할</li>
     <li>슈퍼 하드 집중 포커스 트레이닝이 시작된다.</li>
     <li>곧 모집 시작</li>
   </ul>
 </div>
+<div id="subscribe">
+  <%= form_for :new_mail do |f|-%>
+  <span id="subscribe_text">누구보다 재빠르게 소식받기</span><br>
+  <%= f.text_field :address, :placeholder => '이메일 주소를 남겨주세요.' -%>
+  <%= submit_tag "전송" -%>
+  <% end -%>
+</div>
+<div style="width:100px;height:50px;"></div>
 <div id="footer"><span id="footer_text">2013년 출범할 새로운 동아리, <u>'멋쟁이 사자처럼'</u> 파운더 일동</span></div>
 <div style="width:100px;height:200px;"></div>
 </body>

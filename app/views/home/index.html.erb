@@ -15,25 +15,35 @@
 <%= stylesheet_link_tag    "application", :media => "all" %>
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
-<script>
-$(function(){
-  $("#email_input").keypress(function (e) {
-    if (e.which == 13) { submit_email(); }
+<script type="text/javascript">
+  $(function(){
+    $("#email_input").keypress(function (e) {
+      if (e.which == 13) { submit_email(); }
+    });
   });
-});
-function submit_email(){
-  $.ajax({
-    data:{
-      address : $("#email_input").val()
-    },
-    url: '/home/submit_email',
-    type:'POST',
-    success: function(){
-      alert("감사합니다.\n다음 연락처로 소식을 전달해드리겠습니다.\n"+$("#email_input").val());
-      document.location.reload();
-    }
-  });
-}
+  function submit_email(){
+    $.ajax({
+      data:{
+        address : $("#email_input").val()
+      },
+      url: '/home/submit_email',
+      type:'POST',
+      success: function(){
+        alert("감사합니다.\n다음 연락처로 소식을 전달해드리겠습니다.\n"+$("#email_input").val());
+        document.location.reload();
+      }
+    });
+  }
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37820043-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 </script>
 </head>
 <body>

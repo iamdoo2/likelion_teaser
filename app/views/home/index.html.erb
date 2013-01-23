@@ -22,6 +22,12 @@
     });
   });
   function submit_email(){
+    var mail = $("#email_input").val();
+    var t = escape(mail);
+         if(t.match(/^(\w+)@(\w+)[.](\w+)$/ig) == null && t.match(/^(\w+)@(\w+)[.](\w+)[.](\w+)$/ig) == null && t.match(/^(\w+)@(\w+)[.](\w+)[.](\w+)[.](\w+)$/ig) == null){
+    alert("이메일을 올바르게 입력해 주세요.");
+    document.form.email_input.focus();
+  } else {
     $.ajax({
       data:{
         address : $("#email_input").val()
@@ -33,6 +39,7 @@
         document.location.reload();
       }
     });
+    }
   }
 
   var _gaq = _gaq || [];

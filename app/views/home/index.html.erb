@@ -1,89 +1,380 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7 ]><html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-<title>멋쟁이 사자처럼</title>
-<meta property="og:title" content="멋쟁이 사자처럼" />
-<meta property="og:site_name" content="졸업 전에 내 회사 한번 가져봐야 하지 않겠나?" />
-<meta property="og:image" content="http://likelion.net/assets/thumb.jpg" />
-<meta property="og:url" content="http://likelion.net" />
-<meta property="og:type" content="website" />
-<meta property="fb:app_id" content="149190165235116" />
-<meta property="og:description" content="나만의 웹/앱 서비스를 갖고 싶은 비 컴퓨터공학 전공 서울대인에게 snuev.com 정도 짤 수 있는 실력을 갖추게 할 슈퍼 하드 집중 포커스 트레이닝이 시작된다."/>
 
-<link rel="shortcut icon" href="http://likelion.net/assets/favicon.ico" />
-<link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumMyeongjoExtraBoldWeb' rel='stylesheet' type='text/css' />
-<%= stylesheet_link_tag    "application", :media => "all" %>
-<%= javascript_include_tag "application" %>
-<%= csrf_meta_tags %>
-<script type="text/javascript">
-  $(function(){
-    $("#email_input").keypress(function (e) {
-      if (e.which == 13) { submit_email(); }
-    });
-  });
-  function submit_email(){
-    $.ajax({
-      data:{
-        address : $("#email_input").val()
-      },
-      url: '/home/submit_email',
-      type:'POST',
-      success: function(){
-        alert("감사합니다.\n다음 연락처로 소식을 전달해드리겠습니다.\n"+$("#email_input").val());
-        document.location.reload();
-      }
-    });
-  }
+  <title>멋쟁이 사자처럼</title>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37820043-1']);
-  _gaq.push(['_trackPageview']);
+  <meta charset="utf-8">
+  <meta property="og:title" content="멋쟁이 사자처럼" />
+  <meta property="og:site_name" content="졸업 전에 내 회사 한번 가져봐야 하지 않겠나?" />
+  <meta property="og:image" content="http://likelion.net/assets/thumb.jpg" />
+  <meta property="og:url" content="http://likelion.net" />
+  <meta property="og:type" content="website" />
+  <meta property="fb:app_id" content="149190165235116" />
+  <meta property="og:description" content="나만의 웹/앱 서비스를 갖고 싶은 비 컴퓨터공학 전공 서울대인에게 snuev.com 정도 짤 수 있는 실력을 갖추게 할 슈퍼 하드 집중 포커스 트레이닝이 시작된다."/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+  <%= stylesheet_link_tag "skeleton-v1.1", :media => "all" %>
+  <%= stylesheet_link_tag "flexslider-v1.8", :media => "all" %>
+  <%= stylesheet_link_tag "main-r9", :media => "all" %>
+  <%= stylesheet_link_tag "media-queries-r9", :media => "all" %>
+  <%= stylesheet_link_tag "sprites-r7", :media => "all" %>
+  <%= stylesheet_link_tag "theme-default-r6", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic' rel='stylesheet' type='text/css'>
+
+  <%= javascript_include_tag "jquery-1.8.2.min.js" %>
+  <%= javascript_include_tag "jquery.flexslider-v1.8.min" %>
+  <%= javascript_include_tag "jquery.ba-hashchange-v1.3.min" %>
+  <%= javascript_include_tag "main-r9.js" %>
+
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
+
+  <!-- Allow IE to render HTML5 -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div id="top_nav">
-  <span >멋쟁이 사자처럼</span>
-</div>
-<div id="facebook_division">
-  <div class="fb-like" data-href="http://likelion.net" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-</div>
-<!--FACEBOOK-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=149190165235116";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
-<div id="big_text_wrapper">
-  <p>졸업 전에</p>
-  <p>내 회사 한번</p>
-  <p>가져 봐야 하지 않겠나?</p>
-</div>
-<div id="promise_wrapper">
-  <ul id="promise">
-    <li><u>나만의 웹/앱 서비스</u>를 갖고 싶은</li>
-    <li>비 컴퓨터공학 전공 서울대인에게</li>
-    <li><u>snuev.com</u> 정도 짤 수 있는 실력을 갖추게 할</li>
-    <li>슈퍼 하드 집중 포커스 트레이닝이 시작된다.</li>
-    <li>곧 모집 시작</li>
-  </ul>
-</div>
-<div id="subscribe">
-  <span id="subscribe_text">누구보다 재빠르게 소식받기(<%=@count-%>)</span><br>
-  <%= text_field_tag :address, nil, :placeholder => '이메일 주소를 남겨주세요.', :id => 'email_input' -%>
-  &nbsp;&nbsp;<a href="#" id="submit_link" onclick="submit_email();return false;">전송</a>
-</div>
-<div id="footer">
-  <span id="footer_text">2013년 출범할 새로운 동아리, <u>'멋쟁이 사자처럼'</u> 파운더 일동</span>
-</div>
+<header>
+  <div class="container">
+    <div class="sixteen columns alpha omega">
+      <h1 class="logo">
+        <a href="/">
+          <img src="/assets/logo.png" alt="Spark" class="scale-with-grid hide-for-mobiles" />
+          <img src="/assets/logo-mobile.png" alt="Spark" class="scale-with-grid mobiles-only" />
+        </a>
+      </h1>
+
+      <nav class="menu">
+        <ul>
+          <li><a href="#home" class="active">소개<br /><span>Introduction</span></a></li>
+          <li><a href="#founders">사람들<br /><span>The founders of team</span></a></li>
+          <li><a href="#plan">하려는일<br /><span>Plans and Visions</span></a></li>
+          <li><a href="#recruit">지원하기<br /><span>Recruiting</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="bottom-gradient">
+    <span class="left"></span>
+    <span class="center"></span>
+    <span class="right"></span>
+  </div>  
+</header>
+
+
+<div id="main" role="main">
+
+<article id="home">
+  <div class="container">
+    <div class="row box dark">
+      <div class="seven columns">
+        <div class="welcome-container">
+        <h1>멋쟁이 사자차럼</h1>
+        <h5>알아보자마자, 웃고 깨뜨린다느니보다 질문에 그 가지고 타시랍시요? 생명을 넣는 괜찮고 듣는다. 또 기생 우주입자에서 구경도 인제 성을 동기 줄알고? 거짓말 느끼는 창을 터이다. 두 다 그리 일이 취중에도 없었다. 손뼉을 남편은 하고 초조해온다. 능히 질퍽거리고 프로젝터를 하얀다리를 다리를 돌리고 새앙쥐 이놈아, 뜨끈뜨끈하였다. 보내는 능히 년, 여행 좋았느니. 가지고 받으며 더 언뜻 듯한 수 켕기었다. 매를 닥친 안과 살이 그는 스마트폰은 하나를 한 듯하였다. 보이 다운로드 잠재력은 된 당장 말에 병자에 듯싶다.</h5>
+        <a href="#recruit" class="button call-to-action animate">지원 하러 가기</a>
+        </div>
+      </div>
+      
+      <div class="nine columns">
+        <div class="flexslider">
+          <ul class="slides notloaded">
+            <li><img src="/assets/slides/lion.png" alt="" /></li>
+            <li><img src="/assets/slides/snuev.png" alt="" /></li>
+            <li><img src="/assets/slides/love.png" alt="" /></li>
+          </ul>
+        </div>      
+      </div>
+    </div><!-- .row -->
+    
+    <div class="row">
+      <div class="one-third column headset">
+        <img src="/assets/empty.gif" alt="" class="large-icons icon-menu" />
+        <h4>[Jan - Feb]&nbsp;&nbsp;Recruit</h4>
+        <p>새로운 멤버를 모집하는 기간입니다.<br>총 인원은 <strong>25명을 선발</strong> 할 예정이며, 필요한 경우에는 면접을 진행 할 예정입니다. 서울대학교 학생이면 누구나 지원 가능하며, 비 공대생, <strong>프로그래밍 경험이 없는 학생을 우선 선발</strong> 할 계획입니다. 극 소수의 의지가 높은 비 서울대생도 선발 할 수 있습니다.&nbsp;&nbsp;<a href="#recruit" class="animate">지원 하러 하기</a></p>
+      </div>
+
+      <div class="one-third column headset">
+        <img src="/assets/empty.gif" alt="" class="large-icons icon-font" />
+        <h4>[Mar - Jun]&nbsp;&nbsp;Study</h4>
+        <p><strong>주 3회 월/수/금 저녁 7시 - 9시</strong>에 모여서 집중 공부를 하는 기간입니다. 서울대 강의실에서 진행을 할 예정이고, HTML, CSS, Database, Network 등 <strong>컴퓨터공학 전반적 내용을 웹/앱 서비스 특화</strong>해서 진행 할 계획입니다. 세달 잘 보내면, snuev.com 정도 구현 할 수 있는 능력을 갖을 겁니다.
+      </div>
+
+      <div class="one-third column headset">
+        <img src="/assets/empty.gif" alt="" class="large-icons icon-burst" />
+        <h4>[Jul - Aug]&nbsp;&nbsp;Make</h4>
+        <p>배운걸 써먹는 기간입니다. 평소에 "이런 웹/앱 서비스는 꼭 만들어 보고 싶었어."라고 생각했던 것들을 <strong>본인의 손으로 직접 구현</strong>하는 기간입니다. 그게 학생을 대상으로 하는 서비스든, 교육과 관련된 봉사든 <strong>모든것은 제작자 마음</strong>입니다. 대학 기간 방학중에서 가장 의미있는 여름 방학이 될 것입니다.</p>
+      </div>
+    </div><!-- .row -->
+  
+    <div class="bottom-gradient between-rows">
+      <span class="left"></span>
+      <span class="center"></span>
+      <span class="right"></span>
+    </div>
+  </div><!-- .container -->
+</article>
+
+
+<article id="founders" class="dark">
+  <div class="container">
+    <h1>Founders</h1>
+    <div class="row">
+      <h4>이두희</h4>
+      <p>서울대학교 컴퓨터공학부 학부 03, 석사 08, 박사 10학번</p>
+      <div class="one-third column">
+        <img src="/assets/modern.jpg" alt="" class="scale-with-grid featured" />
+      </div><!-- .columns -->
+      <div class="two-thirds column">
+        <ul class="tabs">
+          <li><a class="active" href="#simple">소개</a></li>
+          <li><a href="#product">Product</a></li>
+          <li><a href="#publication">Publication</a></li>
+        </ul>
+
+        <ul class="tabs-content">
+          <li class="active" id="simple">
+            <ul class="square">
+              <li>울트라캡숑 창업</li>
+              <li>서울대학교 웹개발동아리 와플스튜디오 설립 및 초대회장</li>
+              <ul class="circle">
+                <li>서울대학교 강의평가 snuev.com 기획/개발/운영총괄</li>
+              </ul>
+              <li>서울대학교 중앙전산원 관리자 권한 획득 후, 교수님께 엄청 혼남</li>
+              <li>egloos 관리자 권한 획득 후, SK 상품권 선물로 받음</li>
+              <li>소문들 - 일부는 법적으로까지 가서 결론을 냈음</li>
+              <ul class="circle">
+                <li>바다이야기 실 개발자로 알려져 있음</li>
+                <li>서울대 각종 IT 개인 정보 유출 사건의 주범으로 알려져 있음</li>
+              </ul>
+            </ul>
+          </li>
+          <li id="product">
+            <ul class="square">
+              <li>서울대학교 강의평가 'snuev.com' 기획/개발/운영총괄, 2008 - present</li>
+              <li>명지대 강의평가, 숙명여대 강의평가 등 전국 10여개 대학교의 학생들 강의평가 기획 멘토 및 개발 지원, 2012</li>
+              <li>전세계 대학생네트워크 'klassmate' 기획/개발총괄, 2011</li>
+              <li>소셜커머스 '쿠폰잇수다(Frograms)' 개발, 2010</li>
+              <li>소셜한 소셜커머스 '탐스타운', 'sweetory' 기획/개발총괄, 2010</li>
+              <li>최고의 선생님을 찾고 리뷰하자, '올티쳐' 개발, 2009</li>
+              <li>포털 검색어 기반 트렌드 분석기 'MDMiner' 개발총괄, 2008</li>
+              <li>위치 기반 친구 만들기, '앞집누나' 기획/개발, 2008</li>
+              <li>온라인 프리젠테이션 툴 '물통 ver1.0' 기획/개발, 2008</li>
+              <li>서울대학교 심리학과 실험신청 페이지 'psych.doo2.net' 기획/개발, 2008</li>
+              <li>서울대학교 성희롱/성폭력 상담소 '성희롱 예방교육' 개발, 2008</li>
+              <li>스타트업 '플레이버 프로젝트' 개발, 2007 </li>
+              <li>리듬게임 '배틀댄스' 개발 참여, 2006</li>
+              <li>게임제작 툴, '조물조물' 기획/개발, 서울대학교 컴퓨터공학전 1위, 2006</li>
+              <li>'Zigbee USN Network Monitoring' 기획/개발, 산업자원부장관상 2006</li>
+              <li>3D 리듬게임 'super hand' 기획/개발, 서울대학교 컴퓨터공학전 2위, 2004</li>
+            </ul>
+          </li>
+          <li id="publication">
+            <ul class="square">
+              <li>이성원, 윤주식, <strong>이두희</strong>, 아이폰 기능을 무한 확장할 수 있는 아이폰 액세서리 디바이스 개발, 에이콘출판사, 2011</li>
+              <li>이범기, 전재호, <strong>이두희</strong>, Cassandra High Performance Cookbook, 2013 출판예정</li>
+              <li><strong>Duhee Lee</strong>, Jong-Chan Kim, Chang-Gun Lee, Kanghee Kim, <u>mRT-PLRU: A General Framework for Real-Time Multi-Task Executions on NAND Flash Memory</u>, accepted to IEEE Transactions on Computers, 2013. (SCI)</li>
+              <li>Jong-Chan Kim, <strong>Duhee Lee</strong>, Chang-Gun Lee, Kanghee Kim, <u>RT-PLRU: A New Paging Scheme for Real-Time Execution of Program Codes on NAND Flash Memory for Portable Media Players</u>, in IEEE Transactions on Computers, Vol. 60, Issue 8, pp. 1126-1141, Aug. 2011. (SCI)</li>
+              <li>Kyoung-Soo We, <strong>Duhee Lee</strong>, Chang-Gun Lee, <u>Summary of Design Flows for Using NAND Flash Memory for Soft/Hard Real-Time Programs</u>, in International Workshop on Software Support for Portable Storage (IWSSPS) in conjunction with ESWEEK, Scottsdale, USA, Oct. 2010.</li>
+              <li><strong>Duhee Lee</strong>, Chang-Gun Lee, Kanghee Kim, <u>A Generic Framework for Real-Time Program Executions on NAND Flash Memory in Multi-Tasking Embedded Systems</u>, in 30th IEEE Real-Time Systems Symposium (RTSS), Washington, D.C., USA, Dec. 2009. (SCI)</li>
+              <li><strong>Duhee Lee</strong>, Chang-Gun Lee, Kanghee Kim, <u>Real-time code execution on NAND flash memory supporting wide-spectrum of input data for multiple tasks</u>, in International Workshop on Software Support for Portable Storage (IWSSPS) in conjunction with ESWEEK, France, Oct. 2009.</li>
+              <li>Jong-chan Kim, <strong>Duhee Lee</strong>, Chang-Gun Lee, Kanghee Kim, Eun Young Ha, <u>Real-Time Program Execution on NAND Flash Memory for Portable Media Players</u>, in 29th IEEE Real-Time Systems Symposium (RTSS), Barcelona, Spain , Nov. 2008. (SCI)</li>
+              <li><strong>Duhee Lee</strong>, Jong-Chan Kim, Chang-Gun Lee, <u>Practical Paging Strategy for Real-Time Code Execution of Media Player on NAND Flash Memory</u>, in The International Workshop on Software Support for Portable Storage (IWSSPS) in conjunction with ESWEEK, Atlanta, USA, 2008.</li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- .columns -->
+      
+    </div><!-- .row -->
+
+    <div class="row">
+      <h4>최용철</h4>
+      <p>서울대학교 서울대학교 컴퓨터공학부, 기계항공공학부 복수전공 07학번</p>
+      <div class="one-third column">
+        <img src="/assets/modern.jpg" alt="" class="scale-with-grid featured" />
+      </div><!-- .columns -->
+      <div class="two-thirds column">
+        <ul class="tabs">
+          <li><a class="active" href="#yongchol">소개</a></li>
+        </ul>
+
+        <ul class="tabs-content">
+          <li class="active" id="yongchol">
+            <ul class="square">
+              <li>서울대학교 학생벤처네트워크 snusv 18대 회장</li>
+              <li>제11회, 제12회 대한민국 대학생벤처창업 경진대회 조직위원회</li>
+              <li>"비올레타, 사랑해!" 공동창업 - 오프라인 커피/손편지 선물 서비스</li>
+              <li>2011년 MIT-Global Startup Workshop in Seoul 조직위원회</li>
+              <li>"플레이코업" 공동창업, 개발 - 온라인 Crowdsourcing 서비스</li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- .columns -->
+    </div><!-- .row -->
+
+    <div class="row">
+      <h4>도와주시는 분들</h4>
+      <div class="one-third column">
+        <p>유하은-서울대학교 산업디자인학과</p>
+        <img src="/assets/modern.jpg" alt="" class="scale-with-grid featured" />
+      </div><!-- .columns -->
+      <div class="one-third column">
+        <p>김선욱-서울대학교 화학공학부, MIT</p>
+        <img src="/assets/modern.jpg" alt="" class="scale-with-grid featured" />
+      </div><!-- .columns -->
+    </div><!-- .row -->
+  </div><!-- .container -->
+</article>
+
+
+<article id="plan">
+  <div class="container">
+  
+    <div class="sixteen columns titleset">
+      <h2 class="remove-bottom">Pricing</h2>
+      <h6 class="subheader">Our best deal for now</h6>
+    </div>
+    
+
+    <div class="one-third column">
+      <div class="headset price clearfix">
+        <img src="/assets/empty.gif" alt="" class="large-icons icon-font" />
+        <h4>Basic</h4>
+        <span><sup>$</sup>25<sub>/mo</sub></span>
+      </div>
+      <div class="bottom-gradient add-top add-bottom">
+        <span class="left"></span>
+        <span class="center"></span>
+        <span class="right"></span>
+      </div>
+      <p>This section offers great possibilities to compare plans, products, subscriptions or to just price your services in a clear and distinguish way.</p>
+      <ul class="disc">
+        <li>Cross-browser</li>
+        <li>Fast-loading</li>
+        <li>Bookmarkable URLs</li>
+        <li>W3C Standards</li>
+      </ul>
+      <a href="#contact" class="button featured animate">Sign Up</a>
+    </div><!-- .columns -->
+
+    <div class="one-third column box light featured">
+      <div class="headset price clearfix">
+        <img src="/assets/empty.gif" alt="" class="large-icons icon-shopcart" />
+        <h4>Eshop</h4>
+        <span><sup>$</sup>35<sub>/mo</sub></span>
+      </div>
+      <div class="bottom-gradient add-top add-bottom">
+        <span class="left"></span>
+        <span class="center"></span>
+        <span class="right"></span>
+      </div>
+      <p>This section offers great possibilities to compare plans, products, subscriptions or to just price your services in a clear and distinguish way.</p>
+      <ul class="disc">
+        <li>SEO Optimised</li>
+        <li>Browser History</li>
+        <li>Enterprise-level Website</li>
+        <li>Accessibility</li>
+      </ul>
+      <a href="#contact" class="button featured animate">Sign Up</a>
+    </div><!-- .columns -->
+    
+    <div class="one-third column">
+      <div class="headset price clearfix">
+        <img src="/assets/empty.gif" alt="" class="large-icons icon-burst" />
+        <h4>Custom</h4>
+        <span><sup>$</sup>40<sub>/mo</sub></span>
+      </div>
+      <div class="bottom-gradient add-top add-bottom">
+        <span class="left"></span>
+        <span class="center"></span>
+        <span class="right"></span>
+      </div>
+      <p>This section offers great possibilities to compare plans, products, subscriptions or to just price your services in a clear and distinguish way.</p>
+      <ul class="disc">
+        <li>Grid System Layout</li>
+        <li>Built for Performance</li>
+        <li>Focus on flow and conversions</li>
+        <li>Dynamic URL update</li>
+      </ul>
+      <a href="#contact" class="button featured animate">Sign Up</a>
+    </div><!-- .columns -->
+    
+  </div><!-- container -->
+</article>
+
+
+<article id="recruit" class="dark">
+  <div class="container">  
+  
+    <div class="one-third column">
+      <h3>Apply</h3>
+      <p>좀처럼 쉽지 않은 기회입니다. 따라서 중간에 그만 둘 여지가 있는 분들은 다른 분들께 기회를 양보해주셨으면 합니다.</p>
+      
+      <form action="ajax.php" method="post" class="send-with-ajax">
+        
+        <div class="row">
+          <div class="one columns alpha">
+            <label for="form-name">Your Name <span>required</span></label>
+          </div>
+          <div class="four columns omega">
+            <input type="text" name="name" id="form-name" placeholder="Your Name" required="required" />
+          </div>
+          <div class="six columns alpha">
+            <label for="form-email">Your Email <span>email required</span></label>
+          </div>
+          <div class="four columns omega">  
+            <input type="email" name="email" id="form-email" placeholder="your@email.com" required="required" />
+          </div>
+        </div>
+
+        <div class="row">      
+          <div class="three columns alpha">
+            <label for="form-message">Message</label>
+          </div>
+          <div class="seven columns omega">  
+            <textarea name="message" id="form-message"></textarea>
+          </div>
+        </div>
+        <div class="row">      
+          <div class="three columns alpha">
+            <label for="form-message">Message</label>
+          </div>
+          <div class="seven columns omega">  
+            <textarea name="message" id="form-message"></textarea>
+          </div>
+        </div>
+        <div class="row">      
+          <div class="three columns alpha">
+            <label for="form-message">Message</label>
+          </div>
+          <div class="seven columns omega">  
+            <textarea name="message" id="form-message"></textarea>
+          </div>
+        </div>
+        
+        <div class="seven columns offset-by-three">
+          <button type="submit">Submit Form</button>
+          <div class="ajax-response"></div>
+        </div>
+      
+      </form>
+    </div><!-- .column -->
+  </div><!-- container -->
+</article>
+
+</div><!-- #main -->
+
+
 </body>
 </html>

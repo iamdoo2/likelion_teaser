@@ -1,4 +1,4 @@
 Landing::Application.routes.draw do
   root :to => 'home#index'
-  match ':controller(/:action(/:id))(.:format)'
+  match ':action(/:id)(.:format)', :controller => 'home'
 end

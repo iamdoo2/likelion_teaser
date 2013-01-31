@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>멋쟁이 사자처럼</title>
+<meta property="og:title" content="멋쟁이 사자처럼" />
+<meta property="og:site_name" content="졸업 전에 내 회사 한번 가져봐야 하지 않겠나?" />
+<meta property="og:image" content="http://likelion.net/assets/thumb.jpg" />
+<meta property="og:url" content="http://likelion.net" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="149190165235116" />
+<meta property="og:description" content="나만의 웹/앱 서비스를 갖고 싶은 비 컴퓨터공학 전공 서울대인에게 snuev.com 정도 짤 수 있는 실력을 갖추게 할 슈퍼 하드 집중 포커스 트레이닝이 시작된다."/>
+
+<link rel="shortcut icon" href="http://likelion.net/assets/favicon.ico" />
+<link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumMyeongjoExtraBoldWeb' rel='stylesheet' type='text/css' />
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
+<script type="text/javascript">
+  $(function(){
+    $("#email_input").keypress(function (e) {
+      if (e.which == 13) { submit_email(); }
+    });
+  });
+  function submit_email(){
+    $.ajax({
+      data:{
+        address : $("#email_input").val()
+      },
+      url: '/home/submit_email',
+      type:'POST',
+      success: function(){
+        alert("감사합니다.\n다음 연락처로 소식을 전달해드리겠습니다.\n"+$("#email_input").val());
+        document.location.reload();
+      }
+    });
+  }
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37820043-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<div id="top_nav">
+  <span >멋쟁이 사자처럼</span>
+</div>
+<div id="facebook_division">
+  <div class="fb-like" data-href="http://likelion.net" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+</div>
+<!--FACEBOOK-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=149190165235116";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="big_text_wrapper">
+  <p>졸업 전에</p>
+  <p>내 회사 한번</p>
+  <p>가져 봐야 하지 않겠나?</p>
+</div>
+<div id="promise_wrapper">
+  <ul id="promise">
+    <li><u>나만의 웹/앱 서비스</u>를 갖고 싶은</li>
+    <li>비 컴퓨터공학 전공 서울대인에게</li>
+    <li><u>snuev.com</u> 정도 짤 수 있는 실력을 갖추게 할</li>
+    <li>슈퍼 하드 집중 포커스 트레이닝이 시작된다.</li>
+    <li>곧 모집 시작</li>
+  </ul>
+</div>
+<div id="subscribe">
+  <span id="subscribe_text">누구보다 재빠르게 소식받기(<%=@count-%>)</span><br>
+  <%= text_field_tag :address, nil, :placeholder => '이메일 주소를 남겨주세요.', :id => 'email_input' -%>
+  &nbsp;&nbsp;<a href="#" id="submit_link" onclick="submit_email();return false;">전송</a>
+</div>
+<div id="footer">
+  <span id="footer_text">2013년 출범할 새로운 동아리, <u>'멋쟁이 사자처럼'</u> 파운더 일동</span>
+</div>
+</body>
+</html>

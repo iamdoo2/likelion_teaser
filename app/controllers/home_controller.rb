@@ -1,7 +1,15 @@
 class HomeController < ApplicationController
-  def index
+  def teaser
     @new_mail = SnuMail.new
     @count = SnuMail.count
+  end
+
+  def index
+
+  end
+
+  def recruit_process
+
   end
 
   def submit_email

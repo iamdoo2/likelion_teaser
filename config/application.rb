@@ -52,6 +52,17 @@ module Landing
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
+    config.assets.precompile += ["skeleton-v1.1.css", 
+                                  "flexslider-v1.8.css",
+                                  "main-r9.css",
+                                  "media-queries-r9.css",
+                                  "sprites-r7.css", 
+                                  "theme-default-r6.css"]
+
+    config.assets.precompile += ["jquery-1.8.2.min.js",
+                                  "jquery.flexslider-v1.8.min.js",
+                                  "jquery.ba-hashchange-v1.3.min.js",
+                                  "main-r9.js"]
 
     # Enable the asset pipeline
     config.assets.enabled = true

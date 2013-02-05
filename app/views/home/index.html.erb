@@ -43,6 +43,18 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37820043-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 </head>
 <body>
 
@@ -61,7 +73,7 @@
           <li><a href="#home" class="active">소개&nbsp;&nbsp;<br /><span>멋쟁이 사자처럼은 뭔지</span></a></li>
           <li><a href="#founders">사람들&nbsp;&nbsp;<br /><span>누가 설립 했는지</span></a></li>
           <li><a href="#plan">그리는 꿈&nbsp;&nbsp;<br /><span>어떤걸 함께하려는지</span></a></li>
-          <li><a href="#recruit">지원하기&nbsp;&nbsp;<br /><span>함께하길분은 여기로</span></a></li>
+          <li><a href="#recruit">함께하기&nbsp;&nbsp;<br /><span>함께하길분은 여기로</span></a></li>
         </ul>
       </nav>
     </div>
@@ -79,7 +91,22 @@
 
 <article id="home">
   <div class="container">
-    <div class="row box dark">
+    
+    <!--FACEBOOK-->
+    <div id="facebook_division" style="margin-bottom:5px;margin-left:5px;">
+      <div class="fb-like" data-href="http://likelion.net" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+    </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=149190165235116";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!--FACEBOOK-->
+
+      <div class="row box dark">
       <div class="seven columns">
         <div class="welcome-container">
         <h1>생각 끌어내기</h1>
